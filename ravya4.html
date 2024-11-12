@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>House of Ravya</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* CSS styles */
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            scroll-behavior: smooth;
+            background-color: #f9f9f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 999;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            font-size: 16px;
+            font-weight: 500;
+            color: #555;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #D95A3A;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: url('https://plus.unsplash.com/premium_photo-1665296635107-edcddcdb28e5?q=80&w=2969&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .hero-content {
+            color: #fff;
+            text-align: center;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 60px;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background-color: #D95A3A;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #F37A5A;
+        }
+
+        /* Our Story Section */
+        .our-story {
+            padding: 100px 0;
+        }
+
+        .our-story .container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .story-text {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .story-image {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .story-image img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .our-story h2 {
+            font-size: 40px;
+            color: #5A3E36;
+            margin-bottom: 20px;
+        }
+
+        .our-story p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .secondary-button {
+            background-color: transparent;
+            color: #D95A3A;
+            border: 2px solid #D95A3A;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .secondary-button:hover {
+            background-color: #D95A3A;
+            color: #fff;
+        }
+
+        /* Creations Section */
+        .creations {
+            padding: 100px 0;
+            background-color: #fff;
+        }
+
+        .creations h2 {
+            font-size: 40px;
+            color: #5A3E36;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .creation-cards {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 32%;
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            font-size: 24px;
+            color: #5A3E36;
+            margin-bottom: 15px;
+        }
+
+        .card-content p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Join Us Section */
+        .join-us {
+            padding: 100px 0;
+            background-image: url('join-us.jpg'); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .join-us::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.6);
+        }
+
+        .join-us .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+        }
+
+        .join-us h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .join-us p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            padding: 60px 0;
+            color: #ddd;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .footer-logo img {
+            height: 50px;
+        }
+
+        .footer-links {
+            max-width: 400px;
+        }
+
+        .footer-links h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #D95A3A;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #F37A5A;
+        }
+
+        .social-media {
+            margin-top: 20px;
+        }
+
+        .social-media a {
+            font-size: 20px;
+            color: #ddd;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+
+        .social-media a:hover {
+            color: #F37A5A;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        /* Media Queries */
+        @media (max-width: 1024px) {
+            .creation-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 80%;
+            }
+
+            .our-story .container {
+                flex-direction: column;
+            }
+
+            .story-image {
+                margin-top: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            nav ul {
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                right: -100%;
+                background-color: #fff;
+                width: 200px;
+                transition: right 0.3s;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            nav ul li {
+                margin: 20px 0;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .card {
+                width: 100%;
+            }
+
+            .hero-content h1 {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 30px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <!-- Replace with your logo -->
+                <img src="logo.jpg" alt="House of Ravya Logo">
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#story">Our Story</a></li>
+                    <li><a href="#creations">Creations</a></li>
+                    <li><a href="#journey">Join Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Crafting Kindness</h1>
+            <p>One stitch, one smile, one hopeful step forward at a time.</p>
+            <a href="#creations" class="cta-button">Explore Our Collection</a>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="our-story" id="story">
+        <div class="container">
+            <div class="story-text">
+                <h2>Our Story</h2>
+                <p>In a village where age-old traditions meet modern dreams, Ravya was born—a brand woven from a desire to create something softer, kinder, and lasting for the next generation.</p>
+                <p>With a dedication to eco-friendly practices and child-centered innovation, Ravya seeks to spark joy in every home it touches, bringing warmth to little lives, beloved pets, and cherished family spaces.</p>
+                <a href="#journey" class="secondary-button">Join Our Journey</a>
+            </div>
+            <div class="story-image">
+                <!-- Replace with your image -->
+                <img src="our-story.jpg" alt="Our Story Image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Creations Section -->
+    <section class="creations" id="creations">
+        <div class="container">
+            <h2>Our Creations</h2>
+            <div class="creation-cards">
+                <!-- Card 1 -->
+                <div class="card">
+                    <!-- Replace with your image -->
+                    <img src="https://plus.unsplash.com/premium_photo-1675183690609-1672ce07849f?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Baby Apparel">
+                    <div class="card-content">
+                        <h3>Baby Wear and Accessories</h3>
+                        <p>Imagine a baby romper, soft as a mother’s embrace, designed to grow with every curious step your child takes.</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="card">
+                    <!-- Replace with your image -->
+                    <img src="https://images.unsplash.com/photo-1597674078306-f1f3a5220ce3?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTl8fHBldCUyMHRveXN8ZW58MHx8MHx8fDA%3D" alt="Pet Garments">
+                    <div class="card-content">
+                        <h3>Pet Wear and Accessories</h3>
+                        <p>Think of a pet snuggled up in a cozy wrap, sewn from repurposed fabric scraps, bringing warmth and comfort to every family member.</p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="card">
+                    <!-- Replace with your image -->
+                    <img src="https://images.unsplash.com/photo-1563445401280-9c0cf6e8b708?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Home Décor">
+                    <div class="card-content">
+                        <h3>Home Décor</h3>
+                        <p>Picture your table dressed with a Ravya runner, a piece that brings beauty and a sense of communal care to your home.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Us Section -->
+    <section class="join-us" id="journey">
+        <div class="container">
+            <h2>Join Us in Our Journey</h2>
+            <p>Together, let’s raise a generation that treasures the earth, finds joy in simple moments, and embraces beauty with purpose.</p>
+            <a href="#contact" class="cta-button">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <!-- Replace with your logo -->
+                    <img src="logo.jpg" alt="House of Ravya Logo">
+                </div>
+                <div class="footer-links">
+                    <h3>Contact Us</h3>
+                    <p>Email: <a href="mailto:info@houseofravya.com">info@houseofravya.com</a></p>
+                    <p>Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+                    <div class="social-media">
+                        <!-- Replace '#' with your actual social media profile links -->
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <p class="footer-note">&copy; 2023 House of Ravya. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Hamburger Menu -->
+    <script>
+        // Hamburger Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.querySelector('nav ul');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
